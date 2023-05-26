@@ -58,7 +58,6 @@ if(NOT arrow_POPULATED)
   SET(ARROW_WITH_RE2 False)
   SET(ARROW_WITH_UTF8PROC False)
 
-  message(STATUS "${arrow_SOURCE_DIR}")
   add_subdirectory(${arrow_SOURCE_DIR}/cpp)
 endif()
 
@@ -73,6 +72,5 @@ target_include_directories(
             "$<BUILD_INTERFACE:${arrow_SOURCE_DIR}/cpp/thirdparty/hadoop/include>"
             "$<BUILD_INTERFACE:${arrow_SOURCE_DIR}/cpp/thirdparty/flatbuffers/include>"
 )
-message(STATUS "Arrow_SOURCE_DIR Is `${arrow_SOURCE_DIR}`")
 
 target_link_libraries(main PRIVATE arrow_shared)
