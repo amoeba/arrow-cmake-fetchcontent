@@ -6,6 +6,8 @@ project(example LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
+SET(CMAKE_BUILD_TYPE Debug)
+
 # Get Arrow
 include(FetchContent)
 
@@ -24,7 +26,6 @@ if(NOT arrow_POPULATED)
   SET(ARROW_DEPENDENCY_SOURCE "SYSTEM")
 
   # Normal stuff goes here. This is based on a normal flight-debug preset
-  SET(CMAKE_BUILD_TYPE Debug)
   SET(ARROW_BUILD_INTEGRATION False)
   SET(ARROW_BUILD_STATIC False)
   SET(ARROW_BUILD_TESTS False)
