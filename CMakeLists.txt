@@ -11,7 +11,8 @@ include(FetchContent)
 
 FetchContent_Declare(ARROW
   GIT_REPOSITORY https://github.com/apache/arrow.git
-  GIT_TAG        master
+  GIT_TAG        main
+  GIT_SHALLOW    TRUE SOURCE_SUBDIR cpp
 )
 
 FetchContent_GetProperties(arrow)
