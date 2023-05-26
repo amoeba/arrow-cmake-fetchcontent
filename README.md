@@ -1,24 +1,34 @@
 # arrow-cmake-fetchcontent
 
-Figuring out how to use CMake [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) with [Apache Arrow](https://arrow.apache.org).
-What I'd like to be able to do is make Arrow C++ examples where the user only has to:
-
-1. `git clone $REPO`
-2. `mkdir build`
-3. `cd build`
-4. `cmake ..`
-5. `cmake --build .`
-6. `Run $EXECUTABLE` where `$EXECUTABLE` is linked against one or more Arrow shared libraries.
-
-Subscribe to this repository to watch me flail around at this!
+A minimal and fairly self-contained example of using CMake to use Arrow C++ in a
+separate C++ project. This uses FetchContent instead of ExternalProject to
+include Arrow C++.
 
 ## Status
 
-I'm pretty close, I just have some sort of linking issue which doesn't make
-sense to me yet:
+Right now this is very basic and only links the example against arrow_shared so
+it doesn't include other libraries included with Arrow such as arrow_parquet or
+arrow_dataset.
 
-```
-$ ./main
-dyld[34433]: symbol not found in flat namespace '__ZN5arrow3ipc17RecordBatchWriter16WriteRecordBatchERKNS_11RecordBatchERKNSt3__110shared_ptrIKNS_16KeyValueMetadataEEE'
-fish: Job 1, './main' terminated by signal SIGABRT (Abort)
-```
+## Pre-requisites
+
+- git
+- cmake
+- A C++ compiler toolchain
+
+## Building
+
+1. `git clone https://github.com/amoeba/arrow-cmake-fetchcontent`
+2. `cd arrow-cmake-fetchcontent`
+3. `mkdir build`
+4. `cd build`
+5. `cmake ..` 
+   This fetches Arrow from GitHub so it takes a bit and produces no output
+6. `cmake --build .`
+7. `./example`
+
+## Next steps
+
+- Make it easier to check out different versions of Arrow
+- Document how to customize the Arrow build
+- Make the example more complicated (ie include datasets and parquet)
