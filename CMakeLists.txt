@@ -23,9 +23,6 @@ if(NOT arrow_POPULATED)
   # TODO: This shouldn't be needed, come back to this and see what's up
   SET(ARROW_DEPENDENCY_SOURCE "SYSTEM")
 
-  # Normal stuff goes here. This is based on a normal flight-debug preset
-  SET(ARROW_BUILD_INTEGRATION False)
-
   # TODO: I needed to set this for some reason, otherwise I get this cryptic
   # error CMake Error at build/_deps/arrow-src/cpp/src/arrow/CMakeLists.txt:682
   # (add_dependencies): add_dependencies called with incorrect number of
@@ -40,21 +37,22 @@ if(NOT arrow_POPULATED)
   # build/_deps/arrow-src/cpp/CMakeLists.txt:417 (include)
   SET(ARROW_SIMD_LEVEL NONE)
 
-  SET(ARROW_BUILD_STATIC False)
-
   # TODO: I appear to also have to set this?
   SET(ARROW_BUILD_SHARED True)
 
-  SET(ARROW_BUILD_TESTS False)
+  # Remainder of options, based on the flight-debug preset
   SET(ARROW_ACERO True)
+  SET(ARROW_BUILD_INTEGRATION False)
+  SET(ARROW_BUILD_STATIC False)
+  SET(ARROW_BUILD_TESTS False)
   SET(ARROW_COMPUTE True)
   SET(ARROW_CSV True)
   SET(ARROW_DATASET True)
-  SET(ARROW_PARQUET True)
   SET(ARROW_EXTRA_ERROR_CONTEXT True)
   SET(ARROW_FILESYSTEM True)
   SET(ARROW_FLIGHT True)
   SET(ARROW_JSON True)
+  SET(ARROW_PARQUET True)
   SET(ARROW_WITH_RE2 False)
   SET(ARROW_WITH_UTF8PROC False)
 
