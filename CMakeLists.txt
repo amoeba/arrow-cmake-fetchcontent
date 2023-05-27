@@ -32,10 +32,9 @@ FetchContent_MakeAvailable(Arrow)
 # HACK: Stolen from
 # https://github.com/rapidsai/cudf/blob/branch-23.08/cpp/cmake/thirdparty/get_arrow.cmake#LL236C1-L238C8
 file(INSTALL "${arrow_BINARY_DIR}/src/arrow/util/config.h"
-DESTINATION "${arrow_SOURCE_DIR}/cpp/src/arrow/util")
-file(INSTALL "${arrow_BINARY_DIR}/src/parquet/parquet_version.h"
-  DESTINATION "${arrow_SOURCE_DIR}/cpp/src/parquet"
-)
+     DESTINATION "${arrow_SOURCE_DIR}/cpp/src/arrow/util")
+file(INSTALL "${arrow_BINARYs_DIR}/src/parquet/parquet_version.h"
+     DESTINATION "${arrow_SOURCE_DIR}/cpp/src/parquet")
 
 # NOTE: I had to add this to make headers available which I find weird
 target_include_directories(
