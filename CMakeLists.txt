@@ -41,10 +41,9 @@ target_include_directories(
 )
 
 add_executable(example example.cc)
-target_link_libraries(example 
-                      PRIVATE
-                      arrow_shared 
-                      arrow_dataset_shared
-                      arrow_acero_shared
-                      parquet_shared)
+target_link_libraries(example
+  PRIVATE
+  arrow_shared
+  arrow_dataset_shared
+  arrow_acero_shared
   parquet_shared)
