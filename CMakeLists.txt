@@ -22,23 +22,12 @@ include(FetchContent)
 
 FetchContent_Declare(Arrow
   GIT_REPOSITORY https://github.com/apache/arrow.git
-  GIT_TAG        main
-  GIT_SHALLOW    TRUE SOURCE_SUBDIR cpp
+  GIT_TAG main
+  GIT_SHALLOW TRUE SOURCE_SUBDIR cpp
   OVERRIDE_FIND_PACKAGE
 )
 
 FetchContent_MakeAvailable(Arrow)
-
-# HACK: Stolen from
-# https://github.com/rapidsai/cudf/blob/branch-23.08/cpp/cmake/thirdparty/get_arrow.cmake#LL236C1-L238C8
-file(INSTALL "${arrow_BINARY_DIR}/src/arrow/util/config.h"
-  DESTINATION "${arrow_SOURCE_DIR}/cpp/src/arrow/util")
-
-# NOTE: I had to add this to make headers available which I find weird
-target_include_directories(
-  arrow_shared
-  INTERFACE "$<BUILD_INTERFACE:${arrow_SOURCE_DIR}/cpp/src>"
-)
 
 add_executable(example example.cc)
 target_link_libraries(example
